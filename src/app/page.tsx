@@ -14,47 +14,47 @@ export default function DashboardPage() {
   const [selectedDriverId, setSelectedDriverId] = useState<string | null>(null);
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-4 sm:space-y-6 md:space-y-8 animate-fade-in">
       {/* Hero Header */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-violet-500/10 via-indigo-500/10 to-purple-500/10 border p-8 md:p-10">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-violet-500/20 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-indigo-500/20 to-transparent rounded-full blur-3xl" />
+      <div className="relative overflow-hidden rounded-2xl md:rounded-3xl bg-gradient-to-br from-violet-500/10 via-indigo-500/10 to-purple-500/10 border p-6 md:p-10">
+        <div className="absolute top-0 right-0 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-br from-violet-500/20 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-24 h-24 md:w-48 md:h-48 bg-gradient-to-tr from-indigo-500/20 to-transparent rounded-full blur-3xl" />
         
-        <div className="relative space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-            <Sparkles className="h-3.5 w-3.5" />
+        <div className="relative space-y-3 md:space-y-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs md:text-sm font-medium">
+            <Sparkles className="h-3 w-3 md:h-3.5 md:w-3.5" />
             AI-Powered Fairness
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
             Welcome to <span className="gradient-text">FairRoute</span>
           </h1>
           
-          <p className="text-lg text-muted-foreground max-w-2xl">
+          <p className="text-sm md:text-base lg:text-lg text-muted-foreground max-w-2xl">
             We don&apos;t make all routes equal — we make the workload{" "}
             <span className="text-foreground font-semibold">fair</span>.
             Monitor driver assignments, track effort distribution, and ensure equitable dispatch decisions.
           </p>
           
-          <div className="flex flex-wrap gap-3 pt-2">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-2 md:gap-3 pt-2">
             <Link 
               href="/dispatch"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-violet-500 to-purple-600 text-white font-medium hover:from-violet-600 hover:to-purple-700 transition-all hover:gap-3"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 md:px-5 md:py-2.5 rounded-xl bg-gradient-to-r from-violet-500 to-purple-600 text-white text-sm md:text-base font-medium hover:from-violet-600 hover:to-purple-700 transition-all hover:gap-3"
             >
-              <Bot className="h-4 w-4" />
+              <Bot className="h-3.5 w-3.5 md:h-4 md:w-4" />
               Try AI Dispatch
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-3.5 w-3.5 md:h-4 md:w-4" />
             </Link>
             <Link 
               href="/drivers"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all hover:gap-3"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 md:px-5 md:py-2.5 rounded-xl bg-primary text-primary-foreground text-sm md:text-base font-medium hover:bg-primary/90 transition-all hover:gap-3"
             >
               View Drivers
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-3.5 w-3.5 md:h-4 md:w-4" />
             </Link>
             <Link 
               href="/explanations"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-muted text-foreground font-medium hover:bg-muted/80 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 md:px-5 md:py-2.5 rounded-xl bg-muted text-foreground text-sm md:text-base font-medium hover:bg-muted/80 transition-colors"
             >
               See Explanations
             </Link>

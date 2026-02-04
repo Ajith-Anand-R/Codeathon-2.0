@@ -49,20 +49,20 @@ export function Navigation() {
         )}>
             <div className="container mx-auto px-4 flex h-16 items-center justify-between">
                 {/* Logo */}
-                <Link href="/" className="flex items-center gap-3 group">
-                    <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-br from-violet-500 to-indigo-600 rounded-xl blur-sm opacity-75 group-hover:opacity-100 transition-opacity" />
-                        <div className="relative p-2.5 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 group-hover:from-violet-400 group-hover:to-indigo-500 transition-all shadow-lg">
-                            <Scale className="h-5 w-5 text-white" />
+                <Link href="/" className="flex items-center gap-2 md:gap-3 group">
+                    <div className="relative shrink-0">
+                        <div className="absolute inset-0 bg-gradient-to-br from-violet-500 to-indigo-600 rounded-lg md:rounded-xl blur-sm opacity-75 group-hover:opacity-100 transition-opacity" />
+                        <div className="relative p-2 md:p-2.5 rounded-lg md:rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 group-hover:from-violet-400 group-hover:to-indigo-500 transition-all shadow-lg">
+                            <Scale className="h-4 w-4 md:h-5 md:w-5 text-white" />
                         </div>
                     </div>
                     <div className="flex flex-col">
-                        <span className="font-bold text-lg leading-none tracking-tight flex items-center gap-1.5">
+                        <span className="font-bold text-base md:text-lg leading-none tracking-tight flex items-center gap-1 md:gap-1.5">
                             FairRoute
                             <span className="text-primary">AI</span>
-                            <Sparkles className="h-3.5 w-3.5 text-amber-500" />
+                            <Sparkles className="h-3 w-3 md:h-3.5 md:w-3.5 text-amber-500" />
                         </span>
-                        <span className="text-[10px] text-muted-foreground font-medium tracking-wide">
+                        <span className="hidden sm:inline text-[10px] text-muted-foreground font-medium tracking-wide">
                             FAIRNESS-BY-DESIGN DISPATCH
                         </span>
                     </div>
@@ -116,8 +116,8 @@ export function MobileNavigation() {
     const pathname = usePathname();
 
     return (
-        <nav className="md:hidden fixed bottom-4 left-4 right-4 z-50 rounded-2xl border bg-background/90 backdrop-blur-xl shadow-lg">
-            <div className="flex items-center justify-around h-16">
+        <nav className="md:hidden fixed bottom-3 left-3 right-3 z-40 rounded-2xl border bg-background/95 backdrop-blur-xl shadow-2xl">
+            <div className="flex items-center justify-around px-1 py-2">
                 {navItems.map((item) => {
                     const isActive = pathname === item.href;
                     return (
@@ -125,14 +125,14 @@ export function MobileNavigation() {
                             key={item.href}
                             href={item.href}
                             className={cn(
-                                "flex flex-col items-center gap-1 px-3 py-2 rounded-xl text-xs transition-all",
+                                "flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-xl text-[10px] transition-all min-w-0 flex-1",
                                 isActive 
                                     ? "text-primary bg-primary/10" 
                                     : "text-muted-foreground hover:text-foreground"
                             )}
                         >
-                            <item.icon className={cn("h-5 w-5", isActive && "text-primary")} />
-                            <span className="font-medium">{item.label}</span>
+                            <item.icon className={cn("h-4 w-4 shrink-0", isActive && "text-primary")} />
+                            <span className="font-medium truncate w-full text-center leading-tight">{item.label}</span>
                         </Link>
                     );
                 })}

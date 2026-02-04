@@ -29,6 +29,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* PWA Manifest */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#8b5cf6" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="FairRoute AI" />
+        <link rel="apple-touch-icon" href="/icon-192.png" />
+        
+        {/* Service Worker Registration */}
+        <script src="/register-sw.js" defer></script>
+        
         {/* Leaflet CSS */}
         <link
           rel="stylesheet"
@@ -47,7 +59,7 @@ export default function RootLayout({
         </div>
         
         <Navigation />
-        <main className="container mx-auto px-4 py-8 pb-24 md:pb-8">{children}</main>
+        <main className="container mx-auto px-3 sm:px-4 py-4 sm:py-6 md:py-8 pb-24 md:pb-8">{children}</main>
         <ChatBot />
         <MobileNavigation />
       </body>

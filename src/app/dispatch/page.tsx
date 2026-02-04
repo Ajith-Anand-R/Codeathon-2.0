@@ -185,25 +185,25 @@ export default function DispatchPage() {
     };
 
     return (
-        <div className="space-y-8 animate-fade-in">
+        <div className="space-y-4 sm:space-y-6 md:space-y-8 animate-fade-in">
             {/* Header */}
             <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                    <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl blur-sm opacity-75" />
-                        <div className="relative p-2.5 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600">
-                            <Bot className="h-6 w-6 text-white" />
+                <div className="flex items-center gap-2 md:gap-3">
+                    <div className="relative shrink-0">
+                        <div className="absolute inset-0 bg-gradient-to-br from-violet-500 to-purple-600 rounded-lg md:rounded-xl blur-sm opacity-75" />
+                        <div className="relative p-2 md:p-2.5 rounded-lg md:rounded-xl bg-gradient-to-br from-violet-500 to-purple-600">
+                            <Bot className="h-5 w-5 md:h-6 md:w-6 text-white" />
                         </div>
                     </div>
                     <div>
-                        <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2">
+                        <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold tracking-tight flex flex-wrap items-center gap-2">
                             AI Dispatch Simulator
-                            <Badge className="bg-primary/10 text-primary border-0">
-                                <Sparkles className="h-3 w-3 mr-1" />
+                            <Badge className="bg-primary/10 text-primary border-0 text-xs">
+                                <Sparkles className="h-2.5 w-2.5 md:h-3 md:w-3 mr-1" />
                                 Interactive
                             </Badge>
                         </h1>
-                        <p className="text-muted-foreground">
+                        <p className="text-xs sm:text-sm md:text-base text-muted-foreground">
                             Watch how a thoughtful AI dispatcher assigns routes fairly.
                         </p>
                     </div>
@@ -213,14 +213,14 @@ export default function DispatchPage() {
             {/* Info Banner */}
             <Card className="border-0 shadow-md overflow-hidden bg-gradient-to-r from-violet-500/10 via-purple-500/5 to-transparent">
                 <div className="h-1 bg-gradient-to-r from-violet-500 via-purple-500 to-pink-500" />
-                <CardContent className="pt-6">
-                    <div className="flex gap-4">
-                        <div className="p-3 rounded-xl bg-violet-500/10 h-fit">
-                            <Brain className="h-6 w-6 text-violet-500" />
+                <CardContent className="pt-4 md:pt-6">
+                    <div className="flex gap-3 md:gap-4">
+                        <div className="p-2 md:p-3 rounded-lg md:rounded-xl bg-violet-500/10 h-fit shrink-0">
+                            <Brain className="h-5 w-5 md:h-6 md:w-6 text-violet-500" />
                         </div>
-                        <div className="space-y-2">
-                            <p className="font-semibold text-lg">How the AI Dispatcher Thinks</p>
-                            <p className="text-sm text-muted-foreground leading-relaxed">
+                        <div className="space-y-1 md:space-y-2">
+                            <p className="font-semibold text-sm md:text-base lg:text-lg">How the AI Dispatcher Thinks</p>
+                            <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
                                 This simulator demonstrates how a fair dispatch system evaluates routes and assigns them
                                 to drivers. The AI considers <span className="text-foreground font-medium">current workload</span>,{" "}
                                 <span className="text-foreground font-medium">route difficulty</span>, and{" "}
@@ -233,19 +233,19 @@ export default function DispatchPage() {
             </Card>
 
             {/* Main Grid */}
-            <div className="grid gap-6 lg:grid-cols-3">
+            <div className="grid gap-3 sm:gap-4 md:gap-6 lg:grid-cols-3">
                 {/* Driver Workloads Panel */}
-                <div className="space-y-4">
+                <div className="space-y-3 md:space-y-4">
                     <Card className="border-0 shadow-md bg-card/80 backdrop-blur-sm overflow-hidden">
                         <div className="h-1 bg-gradient-to-r from-blue-500 to-indigo-600" />
-                        <CardHeader>
-                            <CardTitle className="flex items-center gap-2">
-                                <User className="h-5 w-5 text-primary" />
+                        <CardHeader className="pb-2 md:pb-3">
+                            <CardTitle className="flex items-center gap-1.5 md:gap-2 text-sm md:text-base">
+                                <User className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                                 Current Driver Workloads
                             </CardTitle>
-                            <CardDescription>Live effort scores for today</CardDescription>
+                            <CardDescription className="text-xs md:text-sm">Live effort scores for today</CardDescription>
                         </CardHeader>
-                        <CardContent className="space-y-3">
+                        <CardContent className="space-y-2 md:space-y-3">
                             {mockDrivers.map((driver) => {
                                 const effort = currentEfforts.get(driver.id) || 0;
                                 const diff = ((effort - avgEffort) / avgEffort) * 100;
@@ -255,24 +255,24 @@ export default function DispatchPage() {
                                 return (
                                     <div
                                         key={driver.id}
-                                        className="p-3 rounded-xl bg-muted/30 border flex items-center justify-between"
+                                        className="p-2 md:p-3 rounded-lg md:rounded-xl bg-muted/30 border flex items-center justify-between gap-2"
                                     >
-                                        <div className="flex items-center gap-3">
-                                            <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-violet-500/20 to-indigo-500/20 flex items-center justify-center text-sm font-semibold text-primary">
+                                        <div className="flex items-center gap-2 md:gap-3 min-w-0 flex-1">
+                                            <div className="h-8 w-8 md:h-9 md:w-9 rounded-lg md:rounded-xl bg-gradient-to-br from-violet-500/20 to-indigo-500/20 flex items-center justify-center text-xs md:text-sm font-semibold text-primary shrink-0">
                                                 {driver.name
                                                     .split(" ")
                                                     .map((n) => n[0])
                                                     .join("")}
                                             </div>
-                                            <div>
-                                                <p className="font-medium text-sm">{driver.name}</p>
-                                                <p className="text-xs text-muted-foreground">
+                                            <div className="min-w-0 flex-1">
+                                                <p className="font-medium text-xs md:text-sm truncate">{driver.name}</p>
+                                                <p className="text-[10px] md:text-xs text-muted-foreground">
                                                     {isHigh ? "High workload" : isLow ? "Low workload" : "Balanced"}
                                                 </p>
                                             </div>
                                         </div>
-                                        <div className="text-right">
-                                            <p className="font-mono font-bold text-lg">{effort}</p>
+                                        <div className="text-right shrink-0">
+                                            <p className="font-mono font-bold text-base md:text-lg">{effort}</p>
                                             <p
                                                 className={`text-xs font-medium ${isHigh
                                                         ? "text-orange-500"
@@ -309,13 +309,13 @@ export default function DispatchPage() {
                 </div>
 
                 {/* Pending Routes & Decisions */}
-                <div className="lg:col-span-2 space-y-4">
-                    <div className="flex items-center justify-between">
-                        <h2 className="text-xl font-semibold flex items-center gap-2">
-                            <RouteIcon className="h-5 w-5 text-primary" />
+                <div className="lg:col-span-2 space-y-3 md:space-y-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                        <h2 className="text-base sm:text-lg md:text-xl font-semibold flex items-center gap-1.5 md:gap-2">
+                            <RouteIcon className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                             Pending Route Assignments
                         </h2>
-                        <Badge variant="outline">
+                        <Badge variant="outline" className="text-xs w-fit">
                             {assignments.filter((a) => a.status === "assigned").length} /{" "}
                             {assignments.length} assigned
                         </Badge>
@@ -346,20 +346,20 @@ export default function DispatchPage() {
                                                 : "bg-gradient-to-r from-amber-500 to-orange-600"
                                         }`}
                                 />
-                                <CardContent className="pt-5">
-                                    <div className="flex items-start justify-between mb-4">
-                                        <div>
-                                            <h3 className="font-semibold text-lg flex items-center gap-2">
-                                                {assignment.route.name}
+                                <CardContent className="pt-3 md:pt-5 px-3 md:px-6 pb-3 md:pb-6">
+                                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3 md:mb-4">
+                                        <div className="flex-1 min-w-0">
+                                            <h3 className="font-semibold text-sm sm:text-base md:text-lg flex flex-wrap items-center gap-1.5 md:gap-2">
+                                                <span className="truncate">{assignment.route.name}</span>
                                                 <Badge
-                                                    className={`border ${getDifficultyBadge(
+                                                    className={`border text-xs shrink-0 ${getDifficultyBadge(
                                                         difficulty.level
                                                     )}`}
                                                 >
                                                     {difficulty.level}
                                                 </Badge>
                                             </h3>
-                                            <div className="flex flex-wrap gap-3 mt-2 text-sm text-muted-foreground">
+                                            <div className="flex flex-wrap gap-2 md:gap-3 mt-1.5 md:mt-2 text-xs md:text-sm text-muted-foreground">
                                                 <span className="flex items-center gap-1">
                                                     <Package className="h-4 w-4 text-blue-500" />
                                                     {assignment.route.weight_kg}kg
@@ -374,9 +374,9 @@ export default function DispatchPage() {
                                                 </span>
                                             </div>
                                         </div>
-                                        <div className="text-right">
-                                            <p className="text-sm text-muted-foreground">Effort Score</p>
-                                            <p className="font-mono font-bold text-2xl">{difficulty.score}</p>
+                                        <div className="text-right shrink-0">
+                                            <p className="text-xs md:text-sm text-muted-foreground">Effort</p>
+                                            <p className="font-mono font-bold text-xl md:text-2xl">{difficulty.score}</p>
                                         </div>
                                     </div>
 
@@ -394,14 +394,14 @@ export default function DispatchPage() {
 
                                     {/* Status: Thinking */}
                                     {assignment.status === "thinking" && (
-                                        <div className="p-4 rounded-xl bg-violet-500/10 border border-violet-500/30">
-                                            <div className="flex items-center gap-2 mb-3">
-                                                <Brain className="h-5 w-5 text-violet-500 animate-pulse" />
-                                                <span className="font-medium text-violet-600 dark:text-violet-400">
+                                        <div className="p-3 md:p-4 rounded-lg md:rounded-xl bg-violet-500/10 border border-violet-500/30">
+                                            <div className="flex items-center gap-1.5 md:gap-2 mb-2 md:mb-3">
+                                                <Brain className="h-4 w-4 md:h-5 md:w-5 text-violet-500 animate-pulse" />
+                                                <span className="font-medium text-xs md:text-sm text-violet-600 dark:text-violet-400">
                                                     AI is analyzing...
                                                 </span>
                                             </div>
-                                            <div className="space-y-1 text-sm text-muted-foreground">
+                                            <div className="space-y-0.5 md:space-y-1 text-xs md:text-sm text-muted-foreground">
                                                 {thinkingSteps.map((step, i) => (
                                                     <p key={i} className="flex items-center gap-2 animate-fade-in">
                                                         <CheckCircle2 className="h-3 w-3 text-emerald-500" />
@@ -414,55 +414,55 @@ export default function DispatchPage() {
 
                                     {/* Status: Decided */}
                                     {assignment.status === "decided" && assignment.decision && (
-                                        <div className="space-y-4">
+                                        <div className="space-y-3 md:space-y-4">
                                             {/* AI Recommendation */}
-                                            <div className="p-4 rounded-xl bg-gradient-to-r from-emerald-500/10 via-emerald-500/5 to-transparent border border-emerald-500/30">
-                                                <div className="flex items-center justify-between mb-3">
-                                                    <div className="flex items-center gap-2">
-                                                        <Target className="h-5 w-5 text-emerald-500" />
-                                                        <span className="font-semibold text-emerald-600 dark:text-emerald-400">
+                                            <div className="p-3 md:p-4 rounded-lg md:rounded-xl bg-gradient-to-r from-emerald-500/10 via-emerald-500/5 to-transparent border border-emerald-500/30">
+                                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2 md:mb-3">
+                                                    <div className="flex items-center gap-1.5 md:gap-2">
+                                                        <Target className="h-4 w-4 md:h-5 md:w-5 text-emerald-500" />
+                                                        <span className="font-semibold text-xs md:text-sm text-emerald-600 dark:text-emerald-400">
                                                             AI Recommendation
                                                         </span>
                                                     </div>
-                                                    <Badge className="bg-emerald-500/15 text-emerald-600 border-emerald-500/30 border">
+                                                    <Badge className="bg-emerald-500/15 text-emerald-600 border-emerald-500/30 border text-[10px] md:text-xs w-fit">
                                                         {Math.round(assignment.decision.confidence * 100)}% confidence
                                                     </Badge>
                                                 </div>
 
-                                                <div className="flex items-center gap-4 mb-4">
-                                                    <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center text-lg font-bold text-emerald-600">
+                                                <div className="flex items-center gap-2 md:gap-4 mb-3 md:mb-4">
+                                                    <div className="h-10 w-10 md:h-12 md:w-12 rounded-lg md:rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center text-sm md:text-lg font-bold text-emerald-600 shrink-0">
                                                         {recommendedDriver?.name
                                                             .split(" ")
                                                             .map((n) => n[0])
                                                             .join("")}
                                                     </div>
-                                                    <div>
-                                                        <p className="font-semibold text-lg">{recommendedDriver?.name}</p>
-                                                        <p className="text-sm text-muted-foreground">Best match for fairness</p>
+                                                    <div className="min-w-0">
+                                                        <p className="font-semibold text-sm md:text-base lg:text-lg truncate">{recommendedDriver?.name}</p>
+                                                        <p className="text-xs md:text-sm text-muted-foreground">Best match for fairness</p>
                                                     </div>
                                                 </div>
 
                                                 {/* Reasoning */}
-                                                <div className="space-y-2 mb-4">
-                                                    <p className="text-sm font-medium">Why this driver?</p>
+                                                <div className="space-y-1 md:space-y-2 mb-3 md:mb-4">
+                                                    <p className="text-xs md:text-sm font-medium">Why this driver?</p>
                                                     {assignment.decision.reasoning.map((reason, i) => (
-                                                        <p key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                                                            <Zap className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
+                                                        <p key={i} className="text-xs md:text-sm text-muted-foreground flex items-start gap-1.5 md:gap-2">
+                                                            <Zap className="h-3.5 w-3.5 md:h-4 md:w-4 text-amber-500 mt-0.5 shrink-0" />
                                                             {reason}
                                                         </p>
                                                     ))}
                                                 </div>
 
                                                 {/* Fairness Impact */}
-                                                <div className="flex items-center gap-4 p-3 rounded-lg bg-muted/30 mb-4">
-                                                    <div className="flex items-center gap-2">
-                                                        <span className="text-sm text-muted-foreground">Fairness Impact:</span>
-                                                        <span className="font-mono">
+                                                <div className="flex flex-wrap items-center gap-2 md:gap-4 p-2 md:p-3 rounded-lg bg-muted/30 mb-3 md:mb-4">
+                                                    <div className="flex items-center gap-1.5 md:gap-2 flex-wrap">
+                                                        <span className="text-xs md:text-sm text-muted-foreground">Fairness Impact:</span>
+                                                        <span className="font-mono text-xs md:text-sm">
                                                             {assignment.decision.fairnessImpact.before}
                                                         </span>
-                                                        <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                                                        <ArrowRight className="h-3 w-3 md:h-4 md:w-4 text-muted-foreground" />
                                                         <span
-                                                            className={`font-mono font-bold ${assignment.decision.fairnessImpact.after <=
+                                                            className={`font-mono font-bold text-xs md:text-sm ${assignment.decision.fairnessImpact.after <=
                                                                     assignment.decision.fairnessImpact.before
                                                                     ? "text-emerald-500"
                                                                     : "text-orange-500"
@@ -490,9 +490,9 @@ export default function DispatchPage() {
 
                                             {/* Alternatives */}
                                             {assignment.decision.alternativeDrivers.length > 0 && (
-                                                <div className="p-4 rounded-xl bg-muted/30 border">
-                                                    <p className="text-sm font-medium mb-3 flex items-center gap-2">
-                                                        <AlertTriangle className="h-4 w-4 text-amber-500" />
+                                                <div className="p-3 md:p-4 rounded-lg md:rounded-xl bg-muted/30 border">
+                                                    <p className="text-xs md:text-sm font-medium mb-2 md:mb-3 flex items-center gap-1.5 md:gap-2">
+                                                        <AlertTriangle className="h-3.5 w-3.5 md:h-4 md:w-4 text-amber-500" />
                                                         Alternative Options (Override AI)
                                                     </p>
                                                     <div className="space-y-2">
@@ -533,14 +533,14 @@ export default function DispatchPage() {
 
                                     {/* Status: Assigned */}
                                     {assignment.status === "assigned" && (
-                                        <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30">
-                                            <div className="flex items-center gap-3">
-                                                <CheckCircle2 className="h-6 w-6 text-emerald-500" />
-                                                <div>
-                                                    <p className="font-semibold text-emerald-600 dark:text-emerald-400">
+                                        <div className="p-3 md:p-4 rounded-lg md:rounded-xl bg-emerald-500/10 border border-emerald-500/30">
+                                            <div className="flex items-center gap-2 md:gap-3">
+                                                <CheckCircle2 className="h-5 w-5 md:h-6 md:w-6 text-emerald-500 shrink-0" />
+                                                <div className="min-w-0">
+                                                    <p className="font-semibold text-xs md:text-sm text-emerald-600 dark:text-emerald-400 truncate">
                                                         Assigned to {assignedDriver?.name}
                                                     </p>
-                                                    <p className="text-sm text-muted-foreground flex items-center gap-1">
+                                                    <p className="text-xs md:text-sm text-muted-foreground flex items-center gap-1">
                                                         <Clock className="h-3 w-3" />
                                                         Just now
                                                     </p>

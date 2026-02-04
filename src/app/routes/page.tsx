@@ -24,19 +24,19 @@ export default function RoutesPage() {
     );
 
     return (
-        <div className="space-y-8 animate-fade-in">
+        <div className="space-y-4 sm:space-y-6 md:space-y-8 animate-fade-in">
             {/* Header */}
             <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                    <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl blur-sm opacity-75" />
-                        <div className="relative p-2.5 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600">
-                            <Map className="h-6 w-6 text-white" />
+                <div className="flex items-center gap-2 md:gap-3">
+                    <div className="relative shrink-0">
+                        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg md:rounded-xl blur-sm opacity-75" />
+                        <div className="relative p-2 md:p-2.5 rounded-lg md:rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600">
+                            <Map className="h-5 w-5 md:h-6 md:w-6 text-white" />
                         </div>
                     </div>
                     <div>
-                        <h1 className="text-3xl font-bold tracking-tight">Route Visualization</h1>
-                        <p className="text-muted-foreground">
+                        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">Route Visualization</h1>
+                        <p className="text-xs sm:text-sm md:text-base text-muted-foreground">
                             Interactive map showing all active routes with difficulty factors.
                         </p>
                     </div>
