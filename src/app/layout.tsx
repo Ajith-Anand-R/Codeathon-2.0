@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navigation, MobileNavigation } from "@/components/Navigation";
+import { ChatBot } from "@/components/ChatBot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,6 +48,7 @@ export default function RootLayout({
         
         <Navigation />
         <main className="container mx-auto px-4 py-8 pb-24 md:pb-8">{children}</main>
+        <ChatBot />
         <MobileNavigation />
       </body>
     </html>

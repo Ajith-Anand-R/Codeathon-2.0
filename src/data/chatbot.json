@@ -1,0 +1,26 @@
+[
+  {
+    "question": "How does FairRoute decide who gets a hard route?",
+    "answer": "The dispatcher looks at each driver's current effort score and recent hard-route history. It prioritizes drivers below the team average and avoids giving repeated hard routes to the same person."
+  },
+  {
+    "question": "What is an Effort Score?",
+    "answer": "Effort Score measures how difficult a route is based on weight, stair climbs, and parking difficulty. It reflects physical and logistical effort, not just distance."
+  },
+  {
+    "question": "What is the Gini Coefficient here?",
+    "answer": "It's a fairness metric (0 to 1). Lower is fairer. We aim for under 0.15 to show well-balanced workloads across drivers."
+  },
+  {
+    "question": "Why is my route different from someone else's?",
+    "answer": "Routes differ by weight, stairs, and parking. The system balances those differences by distributing total effort more evenly across drivers."
+  },
+  {
+    "question": "Can I override the AI recommendation?",
+    "answer": "Yes. The dispatch simulator shows alternative drivers so a dispatcher can override the AI when needed."
+  },
+  {
+    "question": "How is transparency provided to drivers?",
+    "answer": "Every assignment includes a human-readable explanation that cites workload balance and route difficulty factors."
+  }
+]

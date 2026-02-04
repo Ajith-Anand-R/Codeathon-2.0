@@ -1,8 +1,6 @@
 "use client";
 
 import {
-    LineChart,
-    Line,
     XAxis,
     YAxis,
     CartesianGrid,
@@ -17,6 +15,54 @@ import { Badge } from "@/components/ui/badge";
 import { TrendingDown, TrendingUp, Calendar, Target } from "lucide-react";
 import { mockFairnessHistory } from "@/lib/mockData";
 
+interface FairnessTooltipProps {
+    active?: boolean;
+    payload?: Array<{
+        payload: {
+            date: string;
+            giniCoefficient: number;
+            fairnessScore: number;
+            avgEffort: number;
+            highWorkloadDrivers: number;
+        };
+    }>;
+}
+
+function FairnessHistoryTooltip({ active, payload }: FairnessTooltipProps) {
+    if (active && payload && payload.length) {
+        const data = payload[0].payload;
+        return (
+            <div className="bg-card border rounded-xl shadow-lg p-4 backdrop-blur-sm">
+                <p className="font-semibold text-base flex items-center gap-2">
+                    <Calendar className="h-4 w-4 text-primary" />
+                    {data.date}
+                </p>
+                <div className="mt-2 space-y-1">
+                    <p className="text-sm text-muted-foreground flex items-center justify-between gap-4">
+                        <span>Gini Coefficient</span>
+                        <span className="font-mono font-bold text-foreground">{data.giniCoefficient}</span>
+                    </p>
+                    <p className="text-sm text-muted-foreground flex items-center justify-between gap-4">
+                        <span>Fairness Score</span>
+                        <span className={`font-bold ${data.fairnessScore >= 85 ? "text-emerald-500" : data.fairnessScore >= 70 ? "text-amber-500" : "text-red-500"}`}>
+                            {data.fairnessScore}%
+                        </span>
+                    </p>
+                    <p className="text-sm text-muted-foreground flex items-center justify-between gap-4">
+                        <span>Avg Effort</span>
+                        <span className="font-mono text-foreground">{data.avgEffort}</span>
+                    </p>
+                    <p className="text-sm text-muted-foreground flex items-center justify-between gap-4">
+                        <span>High Workload</span>
+                        <span className="text-orange-500 font-medium">{data.highWorkloadDrivers}</span>
+                    </p>
+                </div>
+            </div>
+        );
+    }
+    return null;
+}
+
 export function FairnessHistoryChart() {
     // Calculate trend
     const firstGini = mockFairnessHistory[0].giniCoefficient;
@@ -30,41 +76,6 @@ export function FairnessHistoryChart() {
         date: new Date(item.date).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" }),
         fairnessScore: Math.round((1 - item.giniCoefficient) * 100), // Convert to 0-100 scale
     }));
-
-    const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: Array<{ payload: typeof chartData[0] }> }) => {
-        if (active && payload && payload.length) {
-            const data = payload[0].payload;
-            return (
-                <div className="bg-card border rounded-xl shadow-lg p-4 backdrop-blur-sm">
-                    <p className="font-semibold text-base flex items-center gap-2">
-                        <Calendar className="h-4 w-4 text-primary" />
-                        {data.date}
-                    </p>
-                    <div className="mt-2 space-y-1">
-                        <p className="text-sm text-muted-foreground flex items-center justify-between gap-4">
-                            <span>Gini Coefficient</span>
-                            <span className="font-mono font-bold text-foreground">{data.giniCoefficient}</span>
-                        </p>
-                        <p className="text-sm text-muted-foreground flex items-center justify-between gap-4">
-                            <span>Fairness Score</span>
-                            <span className={`font-bold ${data.fairnessScore >= 85 ? 'text-emerald-500' : data.fairnessScore >= 70 ? 'text-amber-500' : 'text-red-500'}`}>
-                                {data.fairnessScore}%
-                            </span>
-                        </p>
-                        <p className="text-sm text-muted-foreground flex items-center justify-between gap-4">
-                            <span>Avg Effort</span>
-                            <span className="font-mono text-foreground">{data.avgEffort}</span>
-                        </p>
-                        <p className="text-sm text-muted-foreground flex items-center justify-between gap-4">
-                            <span>High Workload</span>
-                            <span className="text-orange-500 font-medium">{data.highWorkloadDrivers}</span>
-                        </p>
-                    </div>
-                </div>
-            );
-        }
-        return null;
-    };
 
     return (
         <Card className="border-0 shadow-md bg-card/80 backdrop-blur-sm overflow-hidden">
@@ -119,7 +130,7 @@ export function FairnessHistoryChart() {
                                 tickLine={false}
                                 tickFormatter={(value) => value.toFixed(2)}
                             />
-                            <Tooltip content={<CustomTooltip />} />
+                            <Tooltip content={<FairnessHistoryTooltip />} />
                             <ReferenceLine
                                 y={0.15}
                                 stroke="hsl(142.1 76.2% 36.3%)"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -44,30 +44,22 @@ interface AssignmentState {
 }
 
 export default function DispatchPage() {
-    const stats = getDashboardStats();
-    const [assignments, setAssignments] = useState<AssignmentState[]>([]);
-    const [currentEfforts, setCurrentEfforts] = useState<Map<string, number>>(new Map());
-    const [isSimulating, setIsSimulating] = useState(false);
-    const [thinkingSteps, setThinkingSteps] = useState<string[]>([]);
-
-    // Initialize state
-    useEffect(() => {
-        // Initialize pending routes
-        setAssignments(
-            mockPendingRoutes.map((route) => ({
-                route,
-                decision: null,
-                status: "pending",
-            }))
-        );
-
-        // Initialize current effort scores
+    const [assignments, setAssignments] = useState<AssignmentState[]>(() =>
+        mockPendingRoutes.map((route) => ({
+            route,
+            decision: null,
+            status: "pending",
+        }))
+    );
+    const [currentEfforts, setCurrentEfforts] = useState<Map<string, number>>(() => {
         const efforts = new Map<string, number>();
         mockEffortScores.forEach((es) => {
             efforts.set(es.driver_id, es.score);
         });
-        setCurrentEfforts(efforts);
-    }, []);
+        return efforts;
+    });
+    const [isSimulating, setIsSimulating] = useState(false);
+    const [thinkingSteps, setThinkingSteps] = useState<string[]>([]);
 
     // Simulate AI thinking process
     const simulateThinking = async (route: Route): Promise<DispatchDecision> => {
